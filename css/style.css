@@ -1,0 +1,602 @@
+/* =====================================================
+   charity: water landing page
+   Brand palette: yellow #FFC700, black #000, white #FFF
+   Font: Montserrat (close match to the brand's Proxima Nova)
+   ===================================================== */
+
+:root {
+  --yellow: #FFC700;
+  --yellow-dark: #E6B300;
+  --black: #000000;
+  --near-black: #111111;
+  --dark-gray: #1C1C1C;
+  --gray: #CFCFCF;
+  --white: #FFFFFF;
+  --font: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --radius: 40px;
+  --transition: 0.25s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  line-height: 1.15;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.container {
+  width: min(1120px, 100% - 3rem);
+  margin: 0 auto;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.eyebrow {
+  color: var(--yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.lead {
+  font-size: 1.15rem;
+  max-width: 680px;
+  color: var(--gray);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-weight: 700;
+  border-radius: var(--radius);
+  text-align: center;
+  transition: transform var(--transition), background var(--transition), box-shadow var(--transition), color var(--transition);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-3px) scale(1.03);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-primary {
+  background: var(--yellow);
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 1.1rem 2.2rem;
+  font-size: 1.1rem;
+  box-shadow: 0 8px 24px rgba(255, 199, 0, 0.25);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: var(--yellow-dark);
+  box-shadow: 0 12px 32px rgba(255, 199, 0, 0.4);
+}
+
+.btn-large {
+  padding: 1.3rem 3rem;
+  font-size: 1.2rem;
+}
+
+.btn-nav {
+  background: var(--yellow);
+  color: var(--black);
+  padding: 0.7rem 2.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.btn-nav:hover {
+  background: var(--yellow-dark);
+}
+
+.btn-outline {
+  border: 2px solid var(--yellow);
+  color: var(--yellow);
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.text-link {
+  color: var(--yellow);
+  font-weight: 700;
+  display: inline-block;
+  transition: transform var(--transition), color var(--transition);
+}
+
+.text-link:hover {
+  color: var(--white);
+  transform: translateX(4px);
+}
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--black);
+}
+
+.nav {
+  width: min(1120px, 100% - 3rem);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 3px solid var(--white);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Simplified jerry can mark, drawn with CSS */
+.logo-can {
+  width: 22px;
+  height: 26px;
+  background: var(--yellow);
+  border-radius: 3px;
+  position: relative;
+}
+
+.logo-can::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 4px;
+  width: 8px;
+  height: 5px;
+  background: var(--yellow);
+  border-radius: 2px 2px 0 0;
+}
+
+.logo-can::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 6px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--black);
+  border-radius: 50%;
+}
+
+.logo-text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  color: var(--white);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin-left: auto;
+}
+
+.nav-links a {
+  font-weight: 500;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color var(--transition);
+}
+
+.nav-links a.active {
+  font-weight: 700;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  min-height: calc(100vh - 90px);
+  width: min(1120px, 100% - 3rem);
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.hero-content {
+  padding: 3rem 0;
+}
+
+.headline {
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  margin-bottom: 1.5rem;
+  animation: rise 0.8s ease both;
+}
+
+.subheadline {
+  font-size: 1.25rem;
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+  color: #EDEDED;
+  animation: rise 0.8s ease 0.15s both;
+}
+
+.hero-content .btn-primary {
+  animation: rise 0.8s ease 0.3s both;
+}
+
+.hero-content .text-link {
+  display: block;
+  margin-top: 1.75rem;
+  animation: rise 0.8s ease 0.45s both;
+}
+
+.hero-image {
+  overflow: hidden;
+  border-radius: 24px;
+  /* torn-edge feel from the mockup */
+  clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%, 3% 70%, 0 40%, 5% 20%);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.hero-image:hover img {
+  transform: scale(1.04);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Impact (white section) ---------- */
+.impact {
+  background: var(--white);
+  color: var(--black);
+}
+
+.impact .lead {
+  color: #444;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.stat {
+  border-top: 4px solid var(--yellow);
+  padding-top: 1.25rem;
+  transition: transform var(--transition);
+}
+
+.stat:hover {
+  transform: translateY(-6px);
+}
+
+.stat-number {
+  display: block;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.stat-label {
+  display: block;
+  margin-top: 0.5rem;
+  color: #444;
+  font-weight: 500;
+}
+
+/* ---------- 100% Model (black section) ---------- */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.model-text p {
+  color: var(--gray);
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+}
+
+.model-cards {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--dark-gray);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.25rem;
+  align-items: start;
+  border: 1px solid transparent;
+  transition: transform var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.card:hover {
+  transform: translateX(8px);
+  border-color: var(--yellow);
+  background: #222;
+}
+
+.card-icon {
+  grid-row: span 2;
+  background: var(--yellow);
+  color: var(--black);
+  font-weight: 800;
+  font-size: 0.95rem;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card p {
+  color: var(--gray);
+  font-size: 0.95rem;
+}
+
+/* ---------- Get Involved (yellow section) ---------- */
+.involved {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.involved .eyebrow {
+  color: var(--black);
+}
+
+.involved .lead {
+  color: #333;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.step {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.step:hover {
+  transform: translateY(-8px) rotate(-1deg);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--black);
+  color: var(--yellow);
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.step p {
+  color: #444;
+  font-size: 0.95rem;
+}
+
+/* ---------- Donate CTA ---------- */
+.donate {
+  text-align: center;
+  background: radial-gradient(ellipse at top, #1E1A00 0%, var(--black) 60%);
+  padding: 6rem 0;
+}
+
+.donate .lead {
+  margin: 0 auto 2.5rem;
+}
+
+.donate-options {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid #333;
+  padding: 2.5rem 0;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.footer-inner .logo-text {
+  font-size: 1.3rem;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 1rem;
+  }
+
+  .hero-content {
+    padding: 3rem 0 2rem;
+    text-align: center;
+  }
+
+  .subheadline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-image {
+    clip-path: none;
+    border-radius: 24px;
+    margin-bottom: 3rem;
+  }
+
+  .hero-image img {
+    min-height: 380px;
+    max-height: 480px;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .stats,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+  }
+
+  .btn-nav {
+    padding: 0.6rem 1.4rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .hero-image img {
+    min-height: 300px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
